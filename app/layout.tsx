@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Suspense } from "react";
 
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { SiteFooter } from "@/components/footer";
@@ -42,7 +43,13 @@ export default function RootLayout({
               <div className="absolute right-[-15%] bottom-[-15%] h-[30rem] w-[30rem] rounded-full bg-cyan-400/10 blur-[100px]" />
             </div>
 
-            <SiteHeader />
+            <Suspense
+              fallback={
+                <div className="border-border/80 h-16 border-b md:h-20" />
+              }
+            >
+              <SiteHeader />
+            </Suspense>
             <main className="mx-auto w-full max-w-7xl px-4 py-6 md:py-10">
               {children}
             </main>
